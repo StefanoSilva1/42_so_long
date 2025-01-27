@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 09:59:47 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 10:56:42 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:57:32 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	cleanup(t_game *game, char **map, char *error_message)
 		free_map(map);
 	if (game->character)
 		mlx_destroy_image(game->mlx, game->character);
+	if (game->character_left)
+		mlx_destroy_image(game->mlx, game->character_left);
+	if (game->character_up)
+		mlx_destroy_image(game->mlx, game->character_up);
+	if (game->character_down)
+		mlx_destroy_image(game->mlx, game->character_down);
 	if (game->wall)
 		mlx_destroy_image(game->mlx, game->wall);
 	if (game->item)

@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:48:34 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 10:58:43 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:01:26 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,19 @@ void	calculate_new_position(int keycode, size_t *new_x, int *new_y)
 		(*new_y)++;
 }
 
-void	render_tile(t_game *game, size_t x, int y)
+void	render_tile(t_game *game, size_t x, int y, int keycode)
 {
 	void	*img;
 
 	img = NULL;
-	if (game->map[y][x] == 'P')
+	if (game->map[y][x] == 'P' && (keycode == KEY_D || keycode == KEY_RIGHT))
 		img = game->character;
+	else if (game->map[y][x] == 'P' && (keycode == KEY_A || keycode == KEY_LEFT))
+		img = game->character_left;
+	else if (game->map[y][x] == 'P' && (keycode == KEY_S || keycode == KEY_DOWN))
+		img = game->character_down;
+	else if (game->map[y][x] == 'P' && (keycode == KEY_W || keycode == KEY_UP))
+		img = game->character_up;
 	else if (game->map[y][x] == '1')
 		img = game->wall;
 	else if (game->map[y][x] == 'C')
@@ -95,11 +101,11 @@ void	move_player(int keycode, t_game *game)
 		if (game->map[new_y][new_x] != 'E')
 		{
 			game->map[game->player_y][game->player_x] = '0';
-			render_tile(game, game->player_x, game->player_y);
+			render_tile(game, game->player_x, game->player_y, keycode);
 			game->player_x = new_x;
 			game->player_y = new_y;
 			game->map[game->player_y][game->player_x] = 'P';
-			render_tile(game, game->player_x, game->player_y);
+			render_tile(game, game->player_x, game->player_y, keycode);
 			game->move_count++;
 			display_move_count(game);
 		}
