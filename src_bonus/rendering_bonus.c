@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   rendering_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:25 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 09:26:34 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:30:43 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	load_image(t_game *game, void **image, char *path)
 {
@@ -61,4 +61,3 @@ void	render_map(t_game *game, char **map)
 		y++;
 	}
 }
-
