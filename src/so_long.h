@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:10 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 07:21:29 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 06:58:42 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ void	load_image(t_game *game, void **image, char *path);
 void	load_images(t_game *game);
 void	move_player(int keycode, t_game *game);
 void	render_map(t_game *game, char **map);
-void	render_tile(t_game *game, size_t x, int y);
+
 
 #endif

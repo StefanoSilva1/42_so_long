@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:48:34 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 07:17:39 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 08:36:12 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	calculate_new_position(int keycode, size_t *new_x, int *new_y)
 		(*new_y)++;
 }
 
-#include "so_long.h"
-
 void	render_tile(t_game *game, size_t x, int y)
 {
 	void	*img;
@@ -52,7 +50,7 @@ void	render_tile(t_game *game, size_t x, int y)
 	else if (game->map[y][x] == 'E')
 		img = game->exit;
 	else if (game->map[y][x] == '0')
-		img = game->exit;
+		img = game->floor;
 	if (img)
 		mlx_put_image_to_window(game->mlx, game->win, img, \
 			x * game->tile_width, y * game->tile_height);
