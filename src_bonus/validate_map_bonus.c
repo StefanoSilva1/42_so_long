@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:48:48 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 09:25:29 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:29:42 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	count_elements(char c, t_game *game, int x, int y)
 		game->exits++;
 	else if (c == 'C')
 		game->items++;
-	else if (c != '0' && c != '1')
+	else if (c != '0' && c != '1' && c != 'G')
 		return (0);
 	return (1);
 }

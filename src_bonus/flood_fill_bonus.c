@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 13:48:16 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 09:25:02 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:49:19 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	flood_fill(char **map_copy, int x, int y, t_game *game)
 {
-	if (x < 0 || y < 0 || map_copy[y][x] == '1')
+	if (x < 0 || y < 0 || map_copy[y][x] == '1' || map_copy[y][x] == 'G')
 		return (0);
 	if (map_copy[y][x] == 'C')
 		game->items_check--;

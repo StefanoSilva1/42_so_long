@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:48:34 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 09:31:24 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:58:43 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	render_tile(t_game *game, size_t x, int y)
 		img = game->exit;
 	else if (game->map[y][x] == '0')
 		img = game->floor;
+	else if (game->map[y][x] == 'G')
+		img = game->ghost;
 	if (img)
 		mlx_put_image_to_window(game->mlx, game->win, img, \
 			x * game->tile_width, y * game->tile_height);
@@ -60,9 +62,13 @@ void	display_move_count(t_game *game)
 {
 	char	*move_str;
 
+	mlx_put_image_to_window(game->mlx, game->win, game->wall, \
+			0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->wall, \
+			45, 0);
 	move_str = ft_itoa(game->move_count);
-	mlx_string_put(game->mlx, game->win, 14, 14, 0x000000, "MOVES: ");
-	mlx_string_put(game->mlx, game->win, 70, 14, 0x000000, move_str);
+	mlx_string_put(game->mlx, game->win, 5, 12, 0x000000, "MOVES:");
+	mlx_string_put(game->mlx, game->win, 47, 12, 0x000000, move_str);
 	free(move_str);
 }
 
@@ -83,8 +89,9 @@ void	move_player(int keycode, t_game *game)
 		}
 		else if (game->map[new_y][new_x] == 'E' && \
 			game->items_collected == game->items)
-			cleanup(game, game->map, "You won\n");
-
+			cleanup(game, game->map, "You Win\n");
+		else if (game->map[new_y][new_x] == 'G')
+			cleanup(game, game->map, "You lose\n");
 		if (game->map[new_y][new_x] != 'E')
 		{
 			game->map[game->player_y][game->player_x] = '0';

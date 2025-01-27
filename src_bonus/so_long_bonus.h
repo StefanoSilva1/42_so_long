@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:10 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 06:58:42 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:55:36 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -37,29 +37,30 @@ typedef struct s_position
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	char		**map;
-	void		*wall;
-	void		*character;
-	void		*item;
-	void		*exit;
-	void		*floor;
-	int			player_x;
-	int			player_y;
-	int			player;
-	size_t		map_width;
-	int			map_height;
-	int			tile_width;
-	int			tile_height;
-	int			items;
-	int			items_check;
-	int			exits_check;
-	int			items_collected;
-	int			window_width;
-	int			window_height;
-	int			exits;
-	int			move_count;
+	void	*mlx;
+	void	*win;
+	char	**map;
+	void	*wall;
+	void	*character;
+	void	*item;
+	void	*exit;
+	void	*floor;
+	void	*ghost;
+	int		player_x;
+	int		player_y;
+	int		player;
+	size_t	map_width;
+	int		map_height;
+	int		tile_width;
+	int		tile_height;
+	int		items;
+	int		items_check;
+	int		exits_check;
+	int		items_collected;
+	int		window_width;
+	int		window_height;
+	int		exits;
+	int		move_count;
 }	t_game;
 
 char	**allocate_map(char *filename, t_game *game);

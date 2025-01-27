@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:25 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 09:30:43 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:56:28 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	load_images(t_game *game)
 	load_image(game, &game->item, "item.xpm");
 	load_image(game, &game->exit, "exit.xpm");
 	load_image(game, &game->floor, "floor.xpm");
+	load_image(game, &game->ghost, "ghost.xpm");
 }
 
 void	render_map(t_game *game, char **map)
@@ -53,6 +54,8 @@ void	render_map(t_game *game, char **map)
 				img = game->exit;
 			else if (map[y][x] == '0')
 				img = game->floor;
+			else if (map[y][x] == 'G')
+				img = game->ghost;
 			if (img)
 				mlx_put_image_to_window(game->mlx, game->win, img, \
 					x * game->tile_width, y * game->tile_height);
