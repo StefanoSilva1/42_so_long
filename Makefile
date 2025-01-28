@@ -22,6 +22,7 @@ SRCS_BONUS  = src_bonus/flood_fill_bonus.c\
               src_bonus/get_next_line_bonus.c\
               src_bonus/main_bonus.c\
               src_bonus/move_character_bonus.c\
+              src_bonus/move_character2_bonus.c\
               src_bonus/read_map_bonus.c\
               src_bonus/rendering_bonus.c\
               src_bonus/valid_arg_bonus.c\

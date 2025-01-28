@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:19 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/26 11:48:58 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:06:58 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	**read_map(char *filename, t_game *game)
 	if (game->map_height == 0)
 		return (NULL);
 	map = allocate_map(filename, game);
+	if (!map)
+		cleanup(game, map, NULL);
 	return (map);
 }
 
@@ -37,7 +39,7 @@ char	**allocate_map(char *filename, t_game *game)
 
 	map = malloc(sizeof(char *) * (game->map_height + 1));
 	if (!map)
-		return (NULL);
+		cleanup(game, map, NULL);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		cleanup(game, map, NULL);

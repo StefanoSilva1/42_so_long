@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:23:13 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/28 10:23:46 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:25:10 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	handle_tile_interaction(t_game *game, char tile)
 	}
 	else if (tile == 'G')
 	{
-		cleanup(game, game->map, "You lose\n");
+		cleanup(game, game->map, "Paraphrasing Willie Wonka:\n"
+			"You bumped into the ghost, so you get nothing! You lose!\n"
+			"Good day, sir!\n");
 	}
 }
 
@@ -55,7 +57,7 @@ void	move_player(int keycode, t_game *game)
 		{
 			if (game->map[new_y][new_x] == 'C')
 				game->map[new_y][new_x] = '0';
-			update_player_position(game, new_x, new_y, keycode);
+			update_position(game, new_x, new_y, keycode);
 		}
 	}
 }

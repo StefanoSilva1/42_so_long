@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:25 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/28 09:47:01 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:10:57 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	load_image(t_game *game, void **image, char *path)
 
 void	load_images(t_game *game)
 {
-	load_image(game, &game->character, "character.xpm");
-	load_image(game, &game->wall, "wall.xpm");
-	load_image(game, &game->item, "item.xpm");
-	load_image(game, &game->exit, "exit.xpm");
-	load_image(game, &game->floor, "floor.xpm");
+	load_image(game, &game->character, "textures/character.xpm");
+	load_image(game, &game->wall, "textures/wall.xpm");
+	load_image(game, &game->item, "textures/item.xpm");
+	load_image(game, &game->exit, "textures/exit.xpm");
+	load_image(game, &game->floor, "textures/floor.xpm");
 }
 
 void	*get_tile_image(t_game *game, char tile)

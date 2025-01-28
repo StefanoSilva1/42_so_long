@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 09:59:47 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 07:01:11 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:50:17 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void	cleanup(t_game *game, char **map, char *error_message)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
+	{
 		mlx_destroy_display(game->mlx);
-	free(game->mlx);
+		free(game->mlx);
+	}
 	exit(0);
 }
 
