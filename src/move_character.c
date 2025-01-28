@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:48:34 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 08:36:12 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:55:27 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,29 @@ void	render_tile(t_game *game, size_t x, int y)
 			x * game->tile_width, y * game->tile_height);
 }
 
+void	handle_player_interaction(t_game *game, size_t new_x, int new_y)
+{
+	if (game->map[new_y][new_x] == 'C')
+	{
+		game->items_collected++;
+		game->map[new_y][new_x] = '0';
+	}
+	else if (game->map[new_y][new_x] == 'E' && \
+		game->items_collected == game->items)
+		cleanup(game, game->map, "You won\n");
+	if (game->map[new_y][new_x] != 'E')
+	{
+		game->map[game->player_y][game->player_x] = '0';
+		render_tile(game, game->player_x, game->player_y);
+		game->player_x = new_x;
+		game->player_y = new_y;
+		game->map[game->player_y][game->player_x] = 'P';
+		render_tile(game, game->player_x, game->player_y);
+		game->move_count++;
+		ft_printf(" Moves: %d\n", game->move_count);
+	}
+}
+
 void	move_player(int keycode, t_game *game)
 {
 	size_t	new_x;
@@ -65,26 +88,5 @@ void	move_player(int keycode, t_game *game)
 	new_y = game->player_y;
 	calculate_new_position(keycode, &new_x, &new_y);
 	if (game->map[new_y][new_x] != '1')
-	{
-		if (game->map[new_y][new_x] == 'C')
-		{
-			game->items_collected++;
-			game->map[new_y][new_x] = '0';
-		}
-		else if (game->map[new_y][new_x] == 'E' && \
-			game->items_collected == game->items)
-			cleanup(game, game->map, "You won\n");
-
-		if (game->map[new_y][new_x] != 'E')
-		{
-			game->map[game->player_y][game->player_x] = '0';
-			render_tile(game, game->player_x, game->player_y);
-			game->player_x = new_x;
-			game->player_y = new_y;
-			game->map[game->player_y][game->player_x] = 'P';
-			render_tile(game, game->player_x, game->player_y);
-			game->move_count++;
-			ft_printf(" Moves: %d\n", game->move_count);
-		}
-	}
+		handle_player_interaction(game, new_x, new_y);
 }

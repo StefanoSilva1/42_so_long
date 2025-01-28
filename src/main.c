@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:25 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/26 19:10:55 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:47:46 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&game, sizeof(t_game));
 	if (argc != 2)
 		cleanup(&game, NULL, "Error\nInvalid number of arguments\n");
-    if (!valid_format(argv[1]))
+	if (!valid_format(argv[1]))
 		cleanup(&game, NULL, "Error\nInvalid Format\n");
 	map = read_map(argv[1], &game);
 	if (!map || !validate_map(map, &game))

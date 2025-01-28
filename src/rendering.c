@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:25 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 09:26:34 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:47:01 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,21 @@ void	load_images(t_game *game)
 	load_image(game, &game->floor, "floor.xpm");
 }
 
+void	*get_tile_image(t_game *game, char tile)
+{
+	if (tile == 'P')
+		return (game->character);
+	else if (tile == '1')
+		return (game->wall);
+	else if (tile == 'C')
+		return (game->item);
+	else if (tile == 'E')
+		return (game->exit);
+	else if (tile == '0')
+		return (game->floor);
+	return (NULL);
+}
+
 void	render_map(t_game *game, char **map)
 {
 	size_t	x;
@@ -42,17 +57,7 @@ void	render_map(t_game *game, char **map)
 		x = 0;
 		while (x < game->map_width)
 		{
-			img = NULL;
-			if (map[y][x] == 'P')
-				img = game->character;
-			else if (map[y][x] == '1')
-				img = game->wall;
-			else if (map[y][x] == 'C')
-				img = game->item;
-			else if (map[y][x] == 'E')
-				img = game->exit;
-			else if (map[y][x] == '0')
-				img = game->floor;
+			img = get_tile_image(game, map[y][x]);
 			if (img)
 				mlx_put_image_to_window(game->mlx, game->win, img, \
 					x * game->tile_width, y * game->tile_height);
@@ -61,4 +66,3 @@ void	render_map(t_game *game, char **map)
 		y++;
 	}
 }
-

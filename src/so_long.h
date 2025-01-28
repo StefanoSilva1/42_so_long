@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:10 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 06:58:42 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:56:32 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
-
 
 typedef struct s_position
 {
@@ -86,6 +85,7 @@ void	load_image(t_game *game, void **image, char *path);
 void	load_images(t_game *game);
 void	move_player(int keycode, t_game *game);
 void	render_map(t_game *game, char **map);
-
+void	*get_image_for_tile(t_game *game, char tile);
+void	handle_player_interaction(t_game *game, size_t new_x, int new_y);
 
 #endif

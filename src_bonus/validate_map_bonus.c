@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:48:48 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 10:29:42 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:49:23 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,26 +95,16 @@ int	validate_map(char **map, t_game	*game)
 	char		**map_copy;
 
 	if (!is_rectangular(map, game))
-	{
 		return (0);
-		ft_printf("not rectangular\n");
-	}
 	if (!has_valid_borders(map))
-	{
 		return (0);
-		ft_printf("no valid borders\n");
-	}
 	if (!has_required_elements(map, game))
-	{
 		return (0);
-		ft_printf("no required elements\n");
-	}
 	game->items_check = game->items;
 	game->exits_check = game->exits;
 	map_copy = duplicate_map(map);
 	if (!flood_fill(map_copy, game->player_x, game->player_y, game))
 	{
-		ft_printf("no reachable path\n");
 		free_map(map_copy);
 		return (0);
 	}
