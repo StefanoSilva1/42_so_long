@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 09:59:47 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 17:57:32 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:05:10 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,8 @@ void	init_window(t_game *game)
 	load_images(game);
 }
 
-void	cleanup(t_game *game, char **map, char *error_message)
+void	cleanup_images(t_game *game)
 {
-	if (error_message)
-		write(2, error_message, ft_strlen(error_message));
-	if (map)
-		free_map(map);
 	if (game->character)
 		mlx_destroy_image(game->mlx, game->character);
 	if (game->character_left)
@@ -50,6 +46,15 @@ void	cleanup(t_game *game, char **map, char *error_message)
 		mlx_destroy_image(game->mlx, game->floor);
 	if (game->ghost)
 		mlx_destroy_image(game->mlx, game->ghost);
+}
+
+void	cleanup(t_game *game, char **map, char *error_message)
+{
+	if (error_message)
+		write(2, error_message, ft_strlen(error_message));
+	if (map)
+		free_map(map);
+	cleanup_images(game);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

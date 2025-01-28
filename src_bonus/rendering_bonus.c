@@ -6,7 +6,7 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:25 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/27 17:38:38 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:11:09 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ void	load_images(t_game *game)
 	load_image(game, &game->ghost, "ghost.xpm");
 }
 
+void	*get_image_for_tile(t_game *game, char tile)
+{
+	if (tile == 'P')
+		return (game->character);
+	else if (tile == '1')
+		return (game->wall);
+	else if (tile == 'C')
+		return (game->item);
+	else if (tile == 'E')
+		return (game->exit);
+	else if (tile == '0')
+		return (game->floor);
+	else if (tile == 'G')
+		return (game->ghost);
+	return (NULL);
+}
+
 void	render_map(t_game *game, char **map)
 {
 	size_t	x;
@@ -46,19 +63,7 @@ void	render_map(t_game *game, char **map)
 		x = 0;
 		while (x < game->map_width)
 		{
-			img = NULL;
-			if (map[y][x] == 'P')
-				img = game->character;
-			else if (map[y][x] == '1')
-				img = game->wall;
-			else if (map[y][x] == 'C')
-				img = game->item;
-			else if (map[y][x] == 'E')
-				img = game->exit;
-			else if (map[y][x] == '0')
-				img = game->floor;
-			else if (map[y][x] == 'G')
-				img = game->ghost;
+			img = get_image_for_tile(game, map[y][x]);
 			if (img)
 				mlx_put_image_to_window(game->mlx, game->win, img, \
 					x * game->tile_width, y * game->tile_height);
