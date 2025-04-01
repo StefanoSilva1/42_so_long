@@ -6,17 +6,16 @@
 /*   By: sdavi-al <sdavi-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:26:10 by sdavi-al          #+#    #+#             */
-/*   Updated: 2025/01/28 09:56:32 by sdavi-al         ###   ########.fr       */
+/*   Updated: 2025/03/14 19:29:21 by sdavi-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include "libft.h"
 # include "mlx.h"
+
 # define TILE_SIZE 45
 # define KEY_W 119
 # define KEY_A 97
